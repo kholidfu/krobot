@@ -7,15 +7,12 @@
 * What
 Basic Implementation of Real Time Messaging API in SLACK
 * Setup and run
-1. create virtualenv
-2. install lib
-
+- create virtualenv
+- install lib
 #+BEGIN_SRC sh
   pip install -r requirements.txt
 #+END_SRC
-
-3. run
-
+- run
 #+BEGIN_SRC sh
   python krobot.py
 #+END_SRC
