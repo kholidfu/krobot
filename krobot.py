@@ -17,6 +17,6 @@ ws_url = login_data["url"]
 
 ws = create_connection(ws_url)
 
-if ws:
+if ws:  # connected
     while True:
         print ws.recv()
