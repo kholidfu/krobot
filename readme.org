@@ -12,7 +12,7 @@ Basic Implementation of Real Time Messaging API in SLACK
 #+BEGIN_SRC sh
   pip install -r requirements.txt
 #+END_SRC
-2. run
+3. run
 #+BEGIN_SRC sh
   python krobot.py
 #+END_SRC
