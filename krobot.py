@@ -1,6 +1,7 @@
 from websocket import create_connection
 import urllib2
 import json
+import time
 
 
 # define var
@@ -34,9 +35,11 @@ if ws:  # connected
     while True:
         json_resp = json.loads(ws.recv())
         try:
-            print "%s (%s) is currently: %s" % (get_users_info(json_resp["user"]),
-                                                get_users_presence(json_resp["user"]),
-                                                json_resp["type"])
+            print "%s (%s) is currently: %s at %s" % (
+                get_users_info(json_resp["user"]),
+                get_users_presence(json_resp["user"]),
+                json_resp["type"],
+                time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            )
         except:
             continue
-        # print ws.recv()
