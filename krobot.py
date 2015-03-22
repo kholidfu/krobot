@@ -18,16 +18,25 @@ auth_url = login_data["url"]
 ws = create_connection(auth_url)
 
 
+def get_users_presence(uid):
+    url = "https://slack.com/api/users.getPresence?token=%s&user=%s" % (token, uid)
+    resp = json.loads(urllib2.urlopen(url).read())
+    return resp["presence"]
+
+
 def get_users_info(uid):
     url = "https://slack.com/api/users.info?token=%s&user=%s" % (token, uid)
     resp = json.loads(urllib2.urlopen(url).read())
     return resp["user"]["name"]
 
+
 if ws:  # connected
     while True:
         json_resp = json.loads(ws.recv())
         try:
-            print "%s is currently: %s" % (get_users_info(json_resp["user"]), json_resp["type"])
+            print "%s (%s) is currently: %s" % (get_users_info(json_resp["user"]),
+                                                get_users_presence(json_resp["user"]),
+                                                json_resp["type"])
         except:
             continue
         # print ws.recv()
